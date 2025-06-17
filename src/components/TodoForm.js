@@ -8,11 +8,13 @@ export const TodoForm = ({addTodo}) => {
       e.preventDefault(); //evita a página carregar ao enviar o formulário
 
       addTodo(value) //passando o 'estado' de TodoForm para TodoWrapper
+
+      setValue(""); //limpa o input depois de submit
     }
 
   return (
     <form className='TodoForm' onSubmit={handleSubmit}>
-    <input type='text' className='todo-input' 
+    <input type='text' className='todo-input' value={value} 
     placeholder='Qual é a tarefa de hoje?' onChange={(e) => setValue(e.target.value)}/>
     <button type='submit' className='todo-btn'>Adicionar Tarefa</button>
     </form>
