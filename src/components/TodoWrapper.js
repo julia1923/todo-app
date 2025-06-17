@@ -14,11 +14,19 @@ export const TodoWrapper = () => {
     console.log(todos)
   }
 
+  const taskCompleted = id => {
+    setTodos(todos.map(
+    todo => todo.id === id ? {...todo, completed: !todo.completed} : todo))
+  }
+
   return (
     <div className='TodoWrapper'>
+      <h1>Concretize suas tarefas!</h1>
         <TodoForm addTodo={addTodo}></TodoForm>
         {todos.map((todo, index) => (
-          <Todo task={todo} key={index}/>
+          <Todo task={todo} key={index}
+          taskCompleted={taskCompleted}
+          />
         ))}
     </div>
   )
